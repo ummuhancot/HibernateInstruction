@@ -30,8 +30,13 @@
              validate: schema'yı validate yapıyor.
              none: yukarıdakilerin hiç birisini yapmıyor.
          -->
-
+        <!--yeni yapılan işlemlerin kayıt olması icin outo işlemi oldu yani tekrar taslo oluşturmaması icin
+        tablo oluşturulur ve yenilikler eklenir sadece updatade-->
         <property name="hbm2ddl.auto">update</property>
+
+        <!--<property name="hbm2ddl.auto">create</property>   <!-tabloyu tekrar tekrar oluşturur her calıştırmada-->
+
+        <!-- <property name="hbm2ddl.auto">create-drop</property> <!- tabloyu oluşturur ve tekrar siler-->
 
         <property name="show_sql">true</property>
 

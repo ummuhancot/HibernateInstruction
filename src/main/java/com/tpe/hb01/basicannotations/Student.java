@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Entity //bu sinifin DB de bir tabloya karsilik gelmesini sagliyoruz, tablonun adı: student
 @Table(name = "t_student") //tablonun ismini kendimiz verebiliriz.OPSİYONEL
 
-//!!! Javaca konuşurken bu sınıfı belirtirken Student,
-//SQLce konuşurken t_student kullanırız.
+//!!! Javaca konuşurken bu sınıfı belirtirken Student,--hql-HQL
+//SQLce konuşurken t_student kullanırız.--sql-SQL
 
 public class Student {
 
