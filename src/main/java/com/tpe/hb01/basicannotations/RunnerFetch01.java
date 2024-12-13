@@ -71,25 +71,61 @@ DB den data çekmek için:fetch işlemlerinde transactiona gerek yoktur.
             System.out.println(s);
         }
 
+
         //SQL-sql ile tüm kayıtları cekme:exercise
-
-
-        // HQL ile grade degeri 98 olan ogrencilerin id ve name bilgilerini getirelim
-        String hql2 = "SELECT s.id,s.name FROM Student s WHERE s.grade=98"; //sql deki isim değiştirdik as deki s yaptık student yerine s oldu
-        //birden fazla class ile calışınca as ile calışmak garanti veri döndürür
-        List<Object[]> resultList = session.createQuery(hql2).getResultList();
-        //geriye dönen datalara göre List<Object[]> kullandık
-        for (Object[] oa:resultList){
-            System.out.println("-----------HQL grade=98-----------");
-            System.out.println(Arrays.toString(oa));
+        System.out.println("----------------SQL-----------------------");
+        String sql2="SELECT * FROM t_student";
+        List<Object[]> result=session.createSQLQuery(sql2).getResultList();
+        for (Object[] objects:result){
+            System.out.println(Arrays.toString(objects));
         }
 
-        //practice:HQL ile
-        //1-ismi Harry Potter olan öğrencileri getirelim
-        //2-tüm öğrencilerin sadece isimlerini getirelim
-        //SQL ile
-        //1-tüm öğrencilerin sadece isimlerini getirelim
+        String sqlall = "SELECT * FROM Student";
+        List<Student> students = session.createSQLQuery(sqlall).addEntity(Student.class).getResultList();
+        for (Student s : students) {
+            System.out.println(s);
+        }
 
+            // HQL ile grade degeri 98 olan ogrencilerin id ve name bilgilerini getirelim
+            String hql2 = "SELECT s.id,s.name FROM Student s WHERE s.grade=98"; //sql deki isim değiştirdik as deki s yaptık student yerine s oldu
+            //birden fazla class ile calışınca as ile calışmak garanti veri döndürür
+            List<Object[]> resultList = session.createQuery(hql2).getResultList();
+            //geriye dönen datalara göre List<Object[]> kullandık
+            for (Object[] oa : resultList) {
+                System.out.println("-----------HQL grade=98-----------");
+                System.out.println(Arrays.toString(oa));
+            }
+
+            //practice:HQL ile
+            //1-ismi Harry Potter olan öğrencileri getirelim
+            //2-tüm öğrencilerin sadece isimlerini getirelim
+            //SQL ile
+            //1-tüm öğrencilerin sadece isimlerini getirelim
+
+            //practice:HQL ile
+            //1-ismi Harry Potter olan öğrencileri getirelim
+            String hql3 = "SELECT s FROM Student s WHERE s.name='Harry Potter'";
+            List<Student> resultList2 = session.createQuery(hql3, Student.class).getResultList();
+
+            for (Student s0 : resultList2) {
+                System.out.println(s0);
+            }
+
+            //2-tüm öğrencilerin sadece isimlerini getirelim
+            String hql4 = "SELECT name FROM Student";
+            List<String> resultList3 = session.createQuery(hql4, String.class).getResultList();
+            System.out.println("----------------------HQL-----------------");
+            for (String s2 : resultList3) {
+                System.out.println(s2);
+            }
+            //SQL ile
+            //1-tüm öğrencilerin sadece isimlerini getirelim
+            String sql3 = "SELECT student_name FROM t_student";
+            List<String> isimler = session.createSQLQuery(sql3).getResultList();
+            System.out.println("----------------SQL-----------------------");
+            for (String s3 : isimler) {
+                System.out.println(s3);
+            }
 
         //1-güvenlik 2-memoriy korunması icin kapattık
         session.close();
