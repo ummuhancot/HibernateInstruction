@@ -39,8 +39,6 @@ public class RunnerSave07 {
         Transaction transaction=session.beginTransaction();
 
 
-
-
         session.save(student1);
         session.save(student2);
         session.save(student3);
