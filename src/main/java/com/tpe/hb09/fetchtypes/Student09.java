@@ -25,7 +25,8 @@ public class Student09 {
 
     private int grade;
 
-    @OneToMany(mappedBy = "student")//default fetchtype:lazy yani tembel
+    //eager hevesli ol diyoruz db giderken student in yanında book u da al diyoruz
+    @OneToMany(mappedBy = "student",fetch = FetchType.EAGER/*, cascade = CascadeType.ALL*/)//default fetchtype:lazy yani tembel
     private List<Book09> bookList=new ArrayList<>();
 
     public Student09() {

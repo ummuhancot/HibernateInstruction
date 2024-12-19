@@ -19,6 +19,11 @@
         <postgresql.connector.version>
             42.6.0
         </postgresql.connector.version>
+
+        <!-- BU KISIM EKLENDİ********************Second Level Cache actı ön bellek kısmı************************************-->
+        <ehcache.version>
+            3.6.3
+        </ehcache.version>
     </properties>
 
     <dependencies>
@@ -36,6 +41,23 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.connector.version}</version>
         </dependency>
+        <!-- BU KISIM EKLENDİ********************Second Level Cache actı 2. ön bellek kısmı actık ************************************-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- BU KISIM EKLENDİ********************Second Level Cache actı 2 .ön bellek kısmı actık ************************************-->
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!--        JCache, bir standarttır (JSR-107).
+Ehcache, JCache standardını uygulayan bir cache sağlayıcısıdır.-->
+
     </dependencies>
 
 </project>

@@ -1,8 +1,6 @@
 package com.tpe.hb09.fetchtypes;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Book09 {
@@ -10,8 +8,11 @@ public class Book09 {
     private Integer id;
     private String name;
 
+    //cascade = CascadeType.ALL:bir kitabı DB ye kaydettiğimde bu kitabın
+    // sahibi olan öğrenciyi de otomatik olarak kaydeder
 
-    @ManyToOne//fk ekler //default fetchtype:eager yani heycanlı demek
+    //lazy tembel ol diyoruz db giderken sadece kitapları al diyoruz
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)//fk ekler //default fetchtype:eager yani heycanlı demek
     private Student09 student;
 
     public Book09() {
